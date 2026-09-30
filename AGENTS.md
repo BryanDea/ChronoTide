@@ -1,7 +1,7 @@
 # Project instructions
 
 ## Product scope
-- Personal timesheet app for an independent professional.
+- ChronoTide: personal timesheet app for an independent professional.
 - Start with PegaSupport; support multiple clients and projects.
 - Daily entry and weekly bulk editing share the same records.
 - Support monthly PDF/CSV reports and immutable sent snapshots.
@@ -59,11 +59,12 @@
 ## Maintenance
 - Preserve existing applicable instructions.
 - Update this file when architecture, commands, or project rules change.
+- After meaningful behavior, schema, setup, or operational changes, use `.agents/skills/update-worklog-docs/SKILL.md` to update affected documentation. README is the documentation entry point; keep verification claims tied to actual evidence.
 
 ## Established commands and current stage
 - Node.js >=22.13 and npm: `npm run install:ci`, `npm run dev`, `npm run build`, `npm run typecheck`, `npm run lint`, `npm run test`.
 - Development uses the retained Sites starter's Vinext/Vite tooling at http://localhost:5173/.
-- Supabase authentication and persistence are implemented. Selected project: PegaSupport Timesheets, ref zbxrvpyfklgdkabunerv, in Ryan’s Org.
-- Migration 20260919215941_timesheet_core is applied. Keep future schema changes versioned.
+- Supabase authentication and persistence are implemented. Each installation supplies its own hosted or local Supabase configuration; never assume access to the original owner’s backend.
+- Migration 20260919215941_timesheet_core defines the initial schema. Check migration history on the chosen backend before applying changes. Keep future schema changes versioned.
 - Saves are atomic deltas with stable request IDs and expected revisions; sent reports store immutable JSON snapshots.
 - See README.md for setup/usage and VERIFICATION.md for actual checks and limitations.

@@ -1,4 +1,19 @@
-# Verification — September 20, 2026
+# Verification
+
+## ChronoTide portability and GitHub preparation — September 30, 2026
+
+- Typecheck, lint and all eight unit tests passed with the preserved avatar-initials fix and ChronoTide branding.
+- A separate clean source copy, without `.env.local`, local runtime state or `.openai/hosting.json`, passed `npm run install:ci` (715 packages) and `npm run build` on Node 24.19.0. Vinext emitted the existing non-fatal route-classification notice. This verifies install/build portability, not authenticated database access.
+- Supabase 2.117.0 CLI help confirmed local initialization, startup and migration commands. `supabase init` succeeded in the disposable copy. Container startup and local migrations remain unverified: Docker is unavailable on this workstation.
+- The clean copy launched successfully and its desktop connection screen was inspected in-browser (ChronoTide title and missing-configuration guidance). Mobile/theme and signed-in UI checks were not repeated.
+- Local Markdown links and `git diff --check` passed.
+- Publication review scanned all original Git blob versions and current publishable files for common key/token/JWT/private-key/database-password patterns, and compared against actual local environment values without printing them. No matches were found. This is a targeted check, not a guarantee against every possible secret format.
+- Only `main` existed locally; no Git remote was configured. Pending code consisted of the avatar fix plus documentation/maintenance instructions; these are consolidated with the portability changes. No independent local branch required a merge.
+- Local environment files and the existing hosting identity remain on disk and ignored. Historical commits contain non-secret project/deployment identifiers; no real timesheet exports or database dumps are included in the current source tree. No production database or hosted deployment was changed.
+- Arbitrary database adapters, full signed-in browser flows and local container persistence were not tested or implemented in this change.
+
+## Earlier verification — September 20, 2026
+
 
 ## Automated checks
 

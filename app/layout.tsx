@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Providers } from './providers';
 import './globals.css';
 export const metadata: Metadata = {
-  title: 'Worklog — Personal Timesheets',
+  title: 'ChronoTide — Personal Timesheets',
   description: 'Private personal timesheets with secure online storage, weekly editing, and monthly reports.',
   icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
 };

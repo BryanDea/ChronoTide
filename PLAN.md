@@ -1,6 +1,6 @@
 # Approved timesheet implementation plan
 
-Approved in conversation. The UI draft was approved and the Supabase implementation is now connected to PegaSupport Timesheets in Ryan’s Org. See VERIFICATION.md for completed checks and remaining limitations.
+Approved architecture for ChronoTide. Supabase authentication and persistence are implemented. Each installation chooses its own hosted or local Supabase backend. See VERIFICATION.md for dated evidence and remaining limitations.
 
 ## Product
 Personal timesheets for independent work. PegaSupport is the initial/default client. Support multiple clients and projects, creating/editing/archiving both. Preserve all historical entries on archive. No team approvals or invoicing.

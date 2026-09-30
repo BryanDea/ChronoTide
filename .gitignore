@@ -49,3 +49,14 @@ next-env.d.ts
 
 *.tsbuildinfo
 /supabase/.temp/
+
+# Private connection/tool state and personal exports
+/supabase/.branches/
+/supabase/seed.sql
+*.dump
+*.backup
+/exports/
+/backups/
+.mcp.json
+/.openai/hosting.json
+/supabase/config.toml

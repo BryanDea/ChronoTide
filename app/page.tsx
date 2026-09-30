@@ -32,6 +32,9 @@ function Workspace({db,user}:{db:SupabaseClient;user:User}) {
   const [page,setPage] = useState('This Week');
   const ws=useWorkspace(db);
   const {entries,projects,clients,profile,dirty}=ws;
+  const profileName=profile?.reporting_name.trim()||'Your workspace';
+  const nameParts=profileName.split(/\s+/);
+  const profileInitials=(Array.from(nameParts[0])[0]+(nameParts.length>1?Array.from(nameParts[nameParts.length-1])[0]:'')).toUpperCase();
   const today=todayIn(profile?.timezone||'America/El_Salvador');
   const initialWeek=monday(today);
   const [weekOverride,setWeek] = useState<string|null>(null);
@@ -86,10 +89,10 @@ function Workspace({db,user}:{db:SupabaseClient;user:User}) {
   if(ws.loading)return <div className="auth-shell"><Loader2 className="animate-spin"/><p>Loading your saved records…</p></div>;
   if(!profile)return <div className="auth-shell"><div className="auth-card"><h1>Unable to load your workspace</h1><p role="alert">{ws.error}</p><Button onClick={()=>void ws.refresh()}><RefreshCw/>Retry</Button><Button variant="ghost" onClick={()=>void db.auth.signOut()}>Sign out</Button></div></div>;
   return <SidebarProvider style={{'--sidebar-width':'238px'} as React.CSSProperties}>
-    <Sidebar className="app-sidebar"><SidebarHeader><button className="brand" onClick={()=>goPage('This Week')}><span className="brand-mark"><Layers3 size={22}/></span><span>Worklog<span className="brand-caption">PERSONAL TIMESHEETS</span></span></button></SidebarHeader>
+    <Sidebar className="app-sidebar"><SidebarHeader><button className="brand" onClick={()=>goPage('This Week')}><span className="brand-mark"><Layers3 size={22}/></span><span>ChronoTide<span className="brand-caption">PERSONAL TIMESHEETS</span></span></button></SidebarHeader>
     <SidebarContent><div className="workspace-label">WORKSPACE</div><SidebarMenu>{navigation.map(({name,icon:Icon})=><SidebarMenuItem key={name}><SidebarMenuButton isActive={page===name} onClick={()=>goPage(name)}><Icon/><span>{name}</span></SidebarMenuButton></SidebarMenuItem>)}</SidebarMenu>
       <div className="sidebar-client"><span className="eyebrow">CURRENT CLIENT</span><div><span className="client-avatar">{clientName[0]}</span><span><strong>{clientName}</strong><small>Independent work</small></span></div></div>
-    </SidebarContent><SidebarFooter><div className="profile"><span className="profile-avatar">YW</span><span><strong>{profile.reporting_name||'Your workspace'}</strong><small title={user.email}>{user.email}</small></span><Button variant="ghost" size="icon" aria-label="Open settings" onClick={()=>goPage('Settings')}><Settings2/></Button></div></SidebarFooter></Sidebar>
+    </SidebarContent><SidebarFooter><div className="profile"><span className="profile-avatar" aria-hidden="true">{profileInitials}</span><span><strong>{profileName}</strong><small title={user.email}>{user.email}</small></span><Button variant="ghost" size="icon" aria-label="Open settings" onClick={()=>goPage('Settings')}><Settings2/></Button></div></SidebarFooter></Sidebar>
     <SidebarInset>
       <header className="topbar"><div className="breadcrumb"><SidebarTrigger className="md:hidden"/><span>Workspace</span><span className="breadcrumb-slash">/</span><strong>{page}</strong></div><div className="topbar-actions"><span className="preview-badge">PRIVATE WORKSPACE</span><Button variant="ghost" size="icon" aria-label="Toggle light and dark mode" onClick={()=>setTheme(resolvedTheme==='dark'?'light':'dark')}><Sun className="hidden dark:block"/><Moon className="dark:hidden"/></Button></div></header>
       <main className="workspace">

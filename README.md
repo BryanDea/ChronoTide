@@ -1,6 +1,24 @@
-# Worklog — PegaSupport timesheets
+# ChronoTide
 
-Personal timesheets built with React, TypeScript, Tailwind CSS and shadcn/ui. Supabase provides authentication and persistent PostgreSQL storage. There are no sample records in the connected application.
+Personal timesheets built with React, TypeScript, Tailwind CSS and shadcn/ui. Supabase provides authentication and persistent PostgreSQL storage. Named fixtures are confined to tests; setup does not copy the original owner’s records.
+
+## Documentation
+
+- [LLM startup prompt](docs/LLM-STARTUP.md): portable instructions and completion checklist.
+- [User guide](docs/USER-GUIDE.md): accounts, entering hours, saving and reports.
+- [Architecture](docs/ARCHITECTURE.md): components, shared records and synchronization.
+- [Database contract](docs/DATABASE.md): schema, ownership, save RPCs and snapshots.
+- [Setup and operations](docs/OPERATIONS.md): environments, authentication, releases and troubleshooting.
+- [Verification](VERIFICATION.md): actual checks and remaining gaps.
+- [Documentation maintenance skill](.agents/skills/update-worklog-docs/SKILL.md): invoke `$update-worklog-docs` after meaningful changes.
+
+ChronoTide runs locally or with your own hosting. Each installation uses its own Supabase backend; no owner account, database access, or user records are included.
+
+## Quick start
+
+Required: Git, Node.js 22.13+ with npm, and a browser. Local Supabase additionally needs a running Docker-compatible container engine; hosted Supabase needs your own project. No LLM, Codex plugin, GitHub CLI, or Supabase MCP integration is required to run the app.
+
+Clone your copy of the repository and enter its directory before the commands below. For an AI-assisted setup, give your agent [the reusable startup prompt](docs/LLM-STARTUP.md).
 
 ## Local setup
 
@@ -15,11 +33,11 @@ npm run dev
 
 The local app runs at http://localhost:5173. Never use a service-role key, secret key, database password or access token in frontend configuration. `.env.local` is ignored; `.env.example` contains placeholders only.
 
-The selected Supabase project is PegaSupport Timesheets in Ryan’s Org. Migration `supabase/migrations/20260919215941_timesheet_core.sql` has already been applied there. For a new project, apply that versioned SQL migration using Supabase's SQL editor or your authenticated migration workflow before opening the app. Do not reapply it to the existing project.
+Choose hosted Supabase or local Supabase (PostgreSQL + Auth + REST API). Follow [database setup](docs/OPERATIONS.md) to provision your own backend and apply versioned migrations. Plain PostgreSQL, SQLite and MySQL are not drop-in replacements; see [database portability](docs/DATABASE.md#database-portability).
 
 In Supabase Authentication → URL Configuration, set Site URL to your app's deployed origin and allow that origin's `/**` redirect pattern. For local development also allow `http://localhost:5173/**`. Register using your own email/password and confirm your email. Passwords belong in the app, never in chat or source files. The app account is separate from your Supabase dashboard login.
 
-Sites hosting uses the same two `NEXT_PUBLIC_SUPABASE_*` variables through its environment settings. Changing these public build values requires rebuilding the app. The retained Vinext/Vite starter supplies deployment tooling; unused D1 scaffolding is not used for timesheet storage.
+Deployment is separate from local setup. Browser configuration changes require a rebuild. The retained Vinext/Vite starter supplies optional Sites deployment tooling; unused D1 scaffolding is not used for timesheet storage.
 
 ## Usage
 
