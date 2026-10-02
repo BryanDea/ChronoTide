@@ -1,6 +1,6 @@
 # Using ChronoTide
 
-ChronoTide is your custom personal timesheet app. Open the private hosted app from [the setup guide](OPERATIONS.md), create an application account if needed, confirm your email and sign in. Your Supabase dashboard login is a different account context.
+ChronoTide is your custom personal timesheet app. Open your configured app using the [setup guide](OPERATIONS.md), create an application account if needed, confirm your email and sign in. Your Supabase dashboard login is a different account context.
 
 ## First use
 

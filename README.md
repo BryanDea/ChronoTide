@@ -14,11 +14,13 @@ Personal timesheets built with React, TypeScript, Tailwind CSS and shadcn/ui. Su
 
 ChronoTide runs locally or with your own hosting. Each installation uses its own Supabase backend; no owner account, database access, or user records are included.
 
+This repository is public so you can review or fork the source. Public access does not grant permission to push to this repository or access the owner's Supabase data. Changes to `main` go through pull requests; see [repository access and release practices](docs/OPERATIONS.md#github-repository-access).
+
 ## Quick start
 
 Required: Git, Node.js 22.13+ with npm, and a browser. Local Supabase additionally needs a running Docker-compatible container engine; hosted Supabase needs your own project. No LLM, Codex plugin, GitHub CLI, or Supabase MCP integration is required to run the app.
 
-Clone your copy of the repository and enter its directory before the commands below. For an AI-assisted setup, give your agent [the reusable startup prompt](docs/LLM-STARTUP.md).
+Clone [ChronoTide](https://github.com/BryanDea/ChronoTide) or your fork and enter its directory before the commands below. For an AI-assisted setup, give your agent [the reusable startup prompt](docs/LLM-STARTUP.md).
 
 ## Local setup
 

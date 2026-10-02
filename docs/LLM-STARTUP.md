@@ -1,6 +1,6 @@
 # ChronoTide — reusable LLM startup prompt
 
-Copy the prompt below into an agent that can read/edit the checkout and run terminal commands. A chat-only LLM can guide the same steps but cannot execute them. Give it the repository URL or local path, never credentials. Private GitHub access must be authorized separately by the repository owner.
+Copy the prompt below into an agent that can read/edit the checkout and run terminal commands. A chat-only LLM can guide the same steps but cannot execute them. Give it the public repository URL or local path, never credentials. Access to the owner's Supabase project is separate.
 
 ---
 
@@ -32,4 +32,4 @@ Maintain the core invariants: integer minutes, calendar work dates, one shared s
 
 ---
 
-Minimum human intervention: choose the backend when absent, authorize private repository/provider access when needed, and enter configuration locally. Deployment and migrations affecting existing remote data require an explicit target and authorization.
+Minimum human intervention: choose the backend when absent, authorize provider access when needed, and enter configuration locally. Deployment and migrations affecting existing remote data require an explicit target and authorization.

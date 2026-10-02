@@ -1,5 +1,13 @@
 # Verification
 
+## Public GitHub repository and main protection — October 2, 2026
+
+- GitHub reported `BryanDea/ChronoTide` as public with `main` as the default branch.
+- Before changing visibility, all reachable Git blobs were scanned for common private-key, GitHub-token, Supabase-key, JWT, database-URL and cloud-key patterns. No matches were found. The only Supabase URL shape was the `.env.example` placeholder; detected email addresses were test fixtures. This targeted scan cannot prove that every possible sensitive value is absent.
+- The GitHub collaborator list showed only the owner, with no deploy keys or repository hooks at the time of review.
+- GitHub's branch-protection API confirmed required pull requests for `main`, enforcement for administrators, and disabled force pushes and deletion. The required approval count is zero, so this is a pull-request gate, not independent review.
+- The live Supabase project's access settings were not changed or rechecked during this repository update.
+
 ## ChronoTide portability and GitHub preparation — September 30, 2026
 
 - Typecheck, lint and all eight unit tests passed with the preserved avatar-initials fix and ChronoTide branding.
