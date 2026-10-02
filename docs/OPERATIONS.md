@@ -6,6 +6,8 @@ The source repository is public at https://github.com/BryanDea/ChronoTide. Anyon
 
 The `main` branch requires a pull request, including for the owner. Force pushes and deletion are disabled. Create a branch for each change, push it, open a pull request and merge it after review. GitHub Free does not require an approving review here, so the owner can merge their own pull request. Repository administrators can still change protection settings; protect the GitHub account and review authorized apps, tokens and collaborators periodically.
 
+GitHub secret-scanning alerts and push protection are enabled for this public repository. They supplement code review and local secret checks; they cannot detect every credential format or prevent secrets from being disclosed outside GitHub.
+
 Do not commit `.env.local`, credentials, database exports or personal timesheet data. Public Git history is visible even if a later commit deletes a file. Review content and history before publishing any new sensitive material.
 
 ## Requirements
@@ -29,7 +31,7 @@ These two values reach the browser. Row-level security and authenticated ownersh
 
 ## Hosted Supabase
 
-1. Create or select your own Supabase project in the dashboard. An application user account is separate from a dashboard login.
+1. Create or select your own Supabase project in the dashboard. An application user account is separate from a dashboard login. Enable MFA on the dashboard owner account and review organization members and access tokens regularly.
 2. For a **new, empty project**, apply `supabase/migrations/20260919215941_timesheet_core.sql` in the SQL editor. For existing installations, inspect schema and migration history first; do not replay initial table-creation SQL. Keep later migrations versioned and apply in order. Dashboard execution does not populate CLI migration history automatically; reconcile history before switching workflows.
 3. In project API settings, obtain the API URL and publishable key and set them locally as described above.
 4. In Authentication → URL Configuration, use `http://localhost:5173` as Site URL for a local-only app and allow `http://localhost:5173/**`. For deployment use your actual HTTPS origin and its allowed redirects. Configure email delivery/confirmation as required.
