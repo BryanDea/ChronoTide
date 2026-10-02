@@ -1,5 +1,13 @@
 # Setup and operations
 
+## GitHub repository access
+
+The source repository is public at https://github.com/BryanDea/ChronoTide. Anyone can read or fork it and propose a pull request. The owner has not added collaborators; public visibility does not give visitors push access or access to the owner's Supabase project or timesheet records.
+
+The `main` branch requires a pull request, including for the owner. Force pushes and deletion are disabled. Create a branch for each change, push it, open a pull request and merge it after review. GitHub Free does not require an approving review here, so the owner can merge their own pull request. Repository administrators can still change protection settings; protect the GitHub account and review authorized apps, tokens and collaborators periodically.
+
+Do not commit `.env.local`, credentials, database exports or personal timesheet data. Public Git history is visible even if a later commit deletes a file. Review content and history before publishing any new sensitive material.
+
 ## Requirements
 
 - Git, Node.js 22.13+ with npm, and a browser.
